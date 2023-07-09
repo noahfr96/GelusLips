@@ -88,7 +88,27 @@ hr.boob{
     max-width: 1000px;
     margin: auto;
     height: 1px;
-
+}
+.profile{
+    margin: auto;
+}
+.profile img{
+    width: 500px;
+    margin-top: 20px;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.header{
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    height: 65px;
+    z-index: 2;
+    border-bottom: solid 50px #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
 }
 /* ---------youtube tutorial--------- */
 .categories{
