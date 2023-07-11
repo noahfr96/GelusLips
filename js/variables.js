@@ -32,9 +32,9 @@ const c = new Intl.NumberFormat("en-us", {
 
 //-------------------------Input Variables----------------------------------
 
-ProductPrice1 = 25
+ProductPrice1 = 15
 
-TaxRate = .07
+TaxRate = .095
 
 
 //-------------------Data------------------------------------------------
