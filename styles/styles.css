@@ -7,6 +7,19 @@ a:hover{
 }
 
 .btn{
+    display: flex;
+    justify-content: center;
+    background: #ff523b;
+    color: #fff;
+    padding: 8px 30px;
+    margin: 30px 0px;
+    border-radius: 30px;
+    transition: background 0.1s;
+}
+.btn:hover{
+    background: #644545;
+}
+.bttn{
     display: inline-block;
     background: #ff523b;
     color: #fff;
@@ -14,6 +27,9 @@ a:hover{
     margin: 30px 0px;
     border-radius: 30px;
     transition: background 0.1s;
+}
+.bttn:hover{
+    background: #644545;
 }
 .noline{
     text-decoration-line: none;  
@@ -85,6 +101,9 @@ a:visited{
     margin-right: none;
     text-align: center;
 }
+.bumbum img{
+    width: 100%;
+}
 hr.boob{
     max-width: 1000px;
     margin: auto;
@@ -132,6 +151,7 @@ hr.boob{
 .small-img-col{
     flex-basis: 24%;
     cursor: pointer;}
+
 .col-3{
     flex-basis: 30%;
     min-width: 250px;
