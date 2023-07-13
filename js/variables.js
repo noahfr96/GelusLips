@@ -1,8 +1,9 @@
 ////////////////////////////////////////////////////////////////////////
-//variables
+
+//variables-------------------------------------------------
 //Product Prices
-var ProductPrice1
-// var Product1QuantPrice
+var SubtotalProduct1
+var QuantProduct1
 
 var TaxRate
 var Tax
@@ -12,9 +13,10 @@ var Total
 
 //Output variables
 
-var cProductPrice1
-var Priceproduct1
-// var cProduct1QuantPrice
+var cPriceProduct1
+var PriceProduct1
+var PricePhraseProduct1
+var cSubtotalProduct1
 
 var cTax
 var cSubtotal
@@ -35,37 +37,47 @@ const c = new Intl.NumberFormat("en-us", {
 
 //-------------------------Input Variables----------------------------------//
 
-ProductPrice1 = 18
+PriceProduct1 = 18;
 
-TaxRate = .095
+TaxRate = .095;
 
 
 //-------------------Data------------------------------------------------//
 //Equations
-Subtotal = ProductPrice1
-Tax = ProductPrice1*TaxRate
+Subtotal = PriceProduct1
+Tax = PriceProduct1*TaxRate
 Total = Subtotal + Tax
 
 //Functions
-function QuantityPriceMultiplier(Product1Quatity) {
-    var Product1QuantPrice = document.getElementById('Product-1-Quant-Price');
-    Product1QuantPrice.value = Product1Quatity.value
+function QuantityPriceMultiplier(QuantProduct1) {
+    QuantProduct1 = document.getElementById('Quant-product-1').value;
+    SubtotalProduct1 = QuantProduct1 * PriceProduct1;
+    document.getElementById('subtotal-Product-1').textContent = c.format(SubtotalProduct1);
 }
+function updateSubtotalTaxTotal() {
+    QuantProduct1 = parseInt(document.getElementById('Quant-product-1').value);
+    Subtotal = QuantProduct1 * PriceProduct1;
+    Tax = Subtotal*TaxRate
+    Total = Subtotal + Tax
+    document.getElementById('Subtotal').textContent = c.format(Subtotal);
+    document.getElementById('Tax').innerHTML = c.format(Tax);
+    document.getElementById('Total').innerHTML = c.format(Total);
+  }
+function adjustInputWidth(input) {
+    input.style.width = (input.value.length + 2.5) + 'ch';
+  }
 
 //Final Outputs
-cProductPrice1 = c.format(ProductPrice1)
-cTax = c.format(Tax)
-cSubtotal = c.format(Subtotal)
-cTotal = c.format(Total)
-
-// cProduct1QuantPrice = 
-
-Priceproduct1 = "Price: " + cProductPrice1;
+cPriceProduct1 = c.format(PriceProduct1);
+cTax = c.format(Tax);
+cSubtotal = c.format(Subtotal);
+cTotal = c.format(Total);
+PricePhraseProduct1 = "Price: " + cPriceProduct1;
+cSubtotalProduct1 = cPriceProduct1
 
 // Sending values to HTML docs.
-document.getElementById('Tax').innerHTML = cTax
-document.getElementById('Subtotal').innerHTML = cSubtotal
-document.getElementById('Total').innerHTML = cTotal
-document.getElementById('Product-price-1').innerHTML = cProductPrice1
-document.getElementById('Price-product-1').innerHTML = Priceproduct1
-// document.getElementById('Product-1-Quant-Price').innerHTML = cProduct1QuantPrice
+document.getElementById('Subtotal').innerHTML = cSubtotal;
+document.getElementById('Tax').innerHTML = cTax;
+document.getElementById('Total').innerHTML = cTotal;
+document.getElementById('Price-Phrase-Product-1').innerHTML = PricePhraseProduct1;
+document.getElementById('subtotal-Product-1').textContent = cSubtotalProduct1;

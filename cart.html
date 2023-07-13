@@ -102,16 +102,19 @@
                                             <img src="assets/Models/model-9.jpg">
                                             <div>
                                                 <p>GeliCase - Black</p>
-                                                <small id="Price-product-1"></small>
+                                                <small id="Price-Phrase-Product-1"></small>
                                                 <br>
                                                 <a href="">Remove</a>
                                             </div>
                                         </div>
                                     </td>
-                                    <td><input type="number" inputmode="numeric" id="product-1-quatity" onchange="QuantityPriceMultiplier(this)" value="1"></td>
-                                    <td id="Product-1-Quant-Price"></td>
+                                    <td>
+                                        <input type="number" id="Quant-product-1" min="1" value="1" oninput="adjustInputWidth(this)" onchange="QuantityPriceMultiplier(); updateSubtotalTaxTotal();">
+                                    </td>
+                                    <td id="subtotal-Product-1"></td>
                                 </tr>
-                            </table>                 
+                            </table>
+                        
                             <div class="total-price">
                         
                                 <table>
