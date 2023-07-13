@@ -55,17 +55,91 @@ function QuantityPriceMultiplier(QuantProduct1) {
     document.getElementById('subtotal-Product-1').textContent = c.format(SubtotalProduct1);
 }
 function updateSubtotalTaxTotal() {
-    QuantProduct1 = parseInt(document.getElementById('Quant-product-1').value);
-    Subtotal = QuantProduct1 * PriceProduct1;
-    Tax = Subtotal*TaxRate
-    Total = Subtotal + Tax
-    document.getElementById('Subtotal').textContent = c.format(Subtotal);
+    var quantProduct1 = document.getElementById('Quant-product-1');
+    var selectedValue = quantProduct1.value;
+    var isTenPlus = selectedValue === "10+";
+  
+    if (isTenPlus) {
+      cSubtotalProduct1 = c.format(0);
+      Subtotal = 0;
+      Tax = 0;
+      Total = 0;
+    } else {
+      QuantProduct1 = parseInt(selectedValue);
+      Subtotal = QuantProduct1 * PriceProduct1;
+      Tax = Subtotal * TaxRate;
+      Total = Subtotal + Tax;
+      cSubtotalProduct1 = c.format(Subtotal);
+    }
+  
+    document.getElementById('Subtotal').innerHTML = c.format(Subtotal);
     document.getElementById('Tax').innerHTML = c.format(Tax);
     document.getElementById('Total').innerHTML = c.format(Total);
+    document.getElementById('subtotal-Product-1').textContent = cSubtotalProduct1;
   }
 function adjustInputWidth(input) {
     input.style.width = (input.value.length + 2.5) + 'ch';
-  }
+}
+function handleQuantityChange(selectElement) {
+    var quantProduct1 = document.getElementById("Quant-product-1");
+
+    if (selectElement.value === "10+") {
+        var inputText = document.createElement("input");
+        inputText.type = "text";
+        inputText.id = "Quant-product-1";
+        inputText.value = "Enter Quantity";
+        inputText.style.color = "#888";
+        inputText.style.width = "82px"; // Set the width of the text box here
+        inputText.style.fontSize = "10px"; // Set the font size of the text here
+        inputText.style.textAlign = "center"; // Center-align the text
+        inputText.onfocus = function() {
+            if (inputText.value === "Enter Quantity") {
+                inputText.value = "";
+                inputText.style.color = "#000";
+                inputText.style.fontSize = "inherit";
+            }
+        };
+        inputText.onblur = function() {
+            if (inputText.value === "") {
+                inputText.value = "Enter Quantity";
+                inputText.style.color = "#888";
+                inputText.style.fontSize = "12px";
+            }
+        };
+        inputText.oninput = function() {
+            QuantityPriceMultiplier();
+            updateSubtotalTaxTotal();
+        };
+        inputText.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                inputText.blur();
+            }
+        });
+        quantProduct1.parentNode.replaceChild(inputText, quantProduct1);
+    } else {
+        var inputNumber = document.createElement("select");
+        inputNumber.id = "Quant-product-1";
+        inputNumber.onchange = function() {
+            QuantityPriceMultiplier();
+            updateSubtotalTaxTotal();
+            handleQuantityChange(this);
+        };
+
+        for (var i = 1; i <= 9; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i;
+            inputNumber.appendChild(option);
+        }
+
+        var option10plus = document.createElement("option");
+        option10plus.value = "10+";
+        option10plus.text = "10+";
+        inputNumber.appendChild(option10plus);
+
+        quantProduct1.parentNode.replaceChild(inputNumber, quantProduct1);
+    }
+}
 
 //Final Outputs
 cPriceProduct1 = c.format(PriceProduct1);
