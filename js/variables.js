@@ -137,6 +137,8 @@ function handleQuantityChange(selectElement) {
         option10plus.text = "10+";
         inputNumber.appendChild(option10plus);
 
+        inputNumber.value = selectElement.value; // Set the selected value
+
         quantProduct1.parentNode.replaceChild(inputNumber, quantProduct1);
     }
 }
