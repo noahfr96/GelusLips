@@ -223,6 +223,7 @@ table{
 .cart-info{
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 .cart-info p,
 .cart-info small {
@@ -264,4 +265,19 @@ td img{
 td:last-child{
     text-align: right;
 }
-
+input[type="number"] {
+    width: 40px; /* Set an initial width */
+}
+.subtotal-header{
+    text-align: right;
+}
+.product-info {
+    display: flex;
+    align-items: center;
+}
+.checkout-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
