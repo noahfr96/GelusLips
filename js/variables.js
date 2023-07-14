@@ -101,9 +101,9 @@ function handleQuantityChange(selectElement) {
         };
         inputText.onblur = function() {
             if (inputText.value === "") {
-                inputText.value = "Enter Quantity";
+                inputText.value = "";
                 inputText.style.color = "#888";
-                inputText.style.fontSize = "12px";
+                inputText.style.fontSize = "10px"; // Set the width of the text box here
             }
         };
         inputText.oninput = function() {
